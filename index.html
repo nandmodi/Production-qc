@@ -134,7 +134,7 @@
       <label><input type="radio" name="status" value="Rejected"> Rejected</label>
       <label><input type="radio" name="status" value="Editing"> Editing</label>
     </div>
-    <button onclick="submitForm()">Next</button>
+    <button onclick="submitForm()">Next (Enter)</button>
   </div>
   <iframe id="hiddenSubmitFrame" name="hiddenSubmitFrame"></iframe>
   <script>
@@ -153,12 +153,7 @@
           const status = statusKey ? (row[statusKey] || "").trim().toLowerCase() : "";
           return status === "" || !["done", "rejected", "editing"].includes(status);
         });
-        if (data.length === 0) {
-          document.getElementById("progressText").innerText = "🎉 All SKUs are already reviewed. No SKU left.";
-          document.getElementById("inputImg").style.display = "none";
-          document.getElementById("outputImg").style.display = "none";
-          document.querySelector(".controls").style.display = "none";
-          return;
+        
         }
         });
         showImage();
@@ -176,7 +171,11 @@
 
       if (currentIndex >= data.length) {
         document.getElementById("progressText").innerText = "✅ Review complete!";
+        document.getElementById("inputImg").style.display = "none";
+        document.getElementById("outputImg").style.display = "none";
+        document.querySelector(".controls").style.display = "none";
         return;
+      }
       }
       const row = data[currentIndex];
       document.getElementById("inputImg").src = row["input_image_hres_url"];
