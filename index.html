@@ -190,7 +190,6 @@
     document.getElementById("outputImg").src = row["output_image_hres_url"];
     document.getElementById("imgId").innerText = row["image_id"];
     document.getElementById("skuId").innerText = row["sku_id"];
-    document.getElementById("progressText").innerText = `Reviewed ${currentIndex + 1} of ${data.length}`;
     preloadNextImages();
   }
 
